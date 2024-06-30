@@ -1,0 +1,70 @@
+import java.util.*;
+class linkedlist{
+    Node head;
+    class Node{
+        int data;
+        Node next;
+        Node(int val){
+            data = val;
+            next = null;
+        }
+    }
+    linkedlist(){
+        head = null;
+    }
+    public void insertend(int val){
+        Node newnode = new Node(val);
+        if (head==null){
+            head = newnode;
+        }
+        else{
+            Node temp = head;
+            while(temp.next != null){
+                temp =  temp.next;
+            }
+            temp.next = newnode;
+        }
+    }
+    public void sort()
+    {
+        if(head==null||head.next==null)
+        {
+            System.out.println("null");
+        }
+        else {
+            Node c,i;
+            int t;
+            for(c=head;c.next!=null;c=c.next)
+            {
+                for(i=c.next;i!=null;i=i.next)
+                {
+                    if(c.data>i.data)
+                    {
+                        t=c.data;
+                        c.data=i.data;
+                        i.data=t;
+                    }
+                }
+            }
+        }
+    }
+    public void display(){
+        Node temp = head;
+        while(temp != null){
+            System.out.print(temp.data+"-->");
+            temp = temp.next;
+        }
+        System.out.print("Null");
+    }
+    public static void main(String args[]){
+        Scanner sc = new Scanner (System.in);
+        linkedlist list = new linkedlist();
+        int m = sc.nextInt();
+        for (int i =0 ;i<m;i++){
+            int val = sc.nextInt();
+            list.insertend(val);
+        }
+        list.sort();
+        list.display();
+    }
+}
